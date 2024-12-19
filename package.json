@@ -3,19 +3,24 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build --mode client && vite build",
-    "preview": "wrangler pages dev ./dist",
-    "deploy": "$npm_execpath run build && wrangler pages deploy ./dist"
+    "build": "vite build",
+    "build:ssg": "vite build --mode ssg",
+    "build:ssr": "vite build --mode ssr",
+    "build:client": "$npm_execpath run clean && vite build --mode client",
+    "clean": "rm -rf dist",
+    "serve-ssg": "$npm_execpath run build:client && $npm_execpath run build:ssg && serve dist",
+    "serve-ssr": "$npm_execpath run build:client && $npm_execpath run build:ssr && bun --port=3001 ./dist/index.js"
   },
   "private": true,
   "dependencies": {
-    "hono": "^4.0.1",
-    "honox": "^0.1.0"
+    "hono": "^4.6.14",
+    "honox": "^0.1.27"
   },
   "devDependencies": {
-    "@hono/vite-cloudflare-pages": "^0.2.4",
-    "@hono/vite-ssg": "^0.0.1",
-    "vite": "^5.0.12",
-    "wrangler": "^3.27.0"
+    "@hono/vite-build": "^1.2.0",
+    "@hono/vite-ssg": "^0.1.0",
+    "prettier": "^3.4.2",
+    "serve": "^14.2.4",
+    "vite": "^6.0.3"
   }
 }

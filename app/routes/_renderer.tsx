@@ -1,6 +1,6 @@
-import { Style } from 'hono/css'
-import { jsxRenderer } from 'hono/jsx-renderer'
-import { Script } from 'honox/server'
+import { Style } from "hono/css";
+import { jsxRenderer } from "hono/jsx-renderer";
+import { Script } from "honox/server";
 
 export default jsxRenderer(({ children, title }) => {
   return (
@@ -12,7 +12,33 @@ export default jsxRenderer(({ children, title }) => {
         <Script src="/app/client.ts" />
         <Style />
       </head>
-      <body>{children}</body>
+      <body>
+        <header>
+          <ul>
+            <li>
+              <a href="/provide-normal-consume-island">
+                Provide normal, consume island
+              </a>
+            </li>
+            <li>
+              <a href="/provide-normal-consume-normal">
+                Provide normal, consume normal
+              </a>
+            </li>
+            <li>
+              <a href="/provide-island-consume-normal">
+                Provide island, consume normal
+              </a>
+            </li>
+            <li>
+              <a href="/provide-island-consume-island">
+                Provide island, consume island
+              </a>
+            </li>
+          </ul>
+        </header>
+        <main>{children}</main>
+      </body>
     </html>
-  )
-})
+  );
+});
