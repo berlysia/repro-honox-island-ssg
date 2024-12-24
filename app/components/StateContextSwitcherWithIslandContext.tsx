@@ -10,7 +10,7 @@ function ClientStateContextSwitcher() {
   }
 
   useEffect(() => {
-    log(`for normal context: ${JSON.stringify({ value, state })}`);
+    log(`for island context: ${JSON.stringify({ value, state })}`);
   }, [value, state]);
 
   return (

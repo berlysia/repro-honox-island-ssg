@@ -6,9 +6,16 @@ import { defineConfig } from "vite";
 
 const entry = "./app/server.ts";
 
+const common = {
+  ssr: {
+    external: ["react", "react-dom"],
+  },
+};
+
 export default defineConfig(({ mode }) => {
   if (mode === "client") {
     return {
+      ...common,
       plugins: [client()],
     };
   }
@@ -17,6 +24,7 @@ export default defineConfig(({ mode }) => {
       build: {
         emptyOutDir: false,
       },
+      ...common,
       plugins: [honox(), ssg({ entry })],
     };
   }
@@ -26,12 +34,14 @@ export default defineConfig(({ mode }) => {
       build: {
         emptyOutDir: false,
       },
+      ...common,
       plugins: [honox(), build({ entry })],
     };
   }
 
   // for dev
   return {
+    ...common,
     plugins: [honox(), client()],
   };
 });

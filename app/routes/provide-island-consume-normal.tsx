@@ -1,6 +1,6 @@
 import { createRoute } from "honox/factory";
 import IslandProvider from "../islands/MyProvider";
-import StateContextSwitcherWithContext from "../islands/StateContextSwitcherWithContext";
+import StateContextSwitcherWithContext from "../components/StateContextSwitcherWithContext";
 
 export default createRoute((c) => {
   const title = c.req.path;

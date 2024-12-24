@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "hono/jsx";
+import { useContext, useEffect, useState } from "react";
 import MyContext from "../MyContext";
 
 function ClientStateContextSwitcher() {
@@ -41,6 +41,7 @@ function ClientStateContextSwitcher() {
         </button>
       </div>
       <textarea
+        // @ts-ignore
         style={{ fieldSizing: "content" }}
         value={logs.join("\n")}
         readOnly
@@ -54,9 +55,10 @@ function ServerStateContextSwitcher() {
 }
 
 export default function StateContextSwitcher() {
-  return import.meta.env.SSR ? (
-    <ServerStateContextSwitcher />
-  ) : (
-    <ClientStateContextSwitcher />
-  );
+  // return import.meta.env.SSR ? (
+  //   <ServerStateContextSwitcher />
+  // ) : (
+  //   <ClientStateContextSwitcher />
+  // );
+  return <ClientStateContextSwitcher />;
 }
