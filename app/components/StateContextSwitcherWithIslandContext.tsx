@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "hono/jsx";
 import MyContext from "../MyContext";
 
 function ClientStateContextSwitcher() {

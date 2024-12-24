@@ -1,8 +1,9 @@
 import { Style } from "hono/css";
 import { reactRenderer } from "@hono/react-renderer";
 import { Script } from "honox/server";
+import { jsxRenderer } from "hono/jsx-renderer";
 
-export default reactRenderer(({ children, title }) => {
+export default jsxRenderer(({ children, title }) => {
   return (
     <html lang="en">
       <head>
